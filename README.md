@@ -40,13 +40,11 @@
 * 강의자료 게시 / 수정
   * 다수의 아이템 존재
 
+* 기존의 웹과는 큰 차이가 없도록
+
 * 그다음은 무엇...?
 
 ## 참고 컨셉 디자인 목록 ([behance](https://www.behance.net/))
-아직 결정되지는 않았음. 그냥 보여줄 예시들 목록.
-
 * [JoongAng Group brand website](https://www.behance.net/gallery/86662029/JoongAng-Group-brand-website)
-* [Architecture studio. web](https://www.behance.net/gallery/83914143/Architecture-stduio-website)
 * [curated by.](https://www.behance.net/gallery/86011477/curated-by)
-* [MotionLand](https://www.behance.net/gallery/85177887/MotionLand)
 * [crowdfunding.de](https://www.behance.net/gallery/88413127/crowdfundingde)
