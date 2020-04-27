@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app :style="backgroundStyle">
     <header-component class="home px-0 px-sm-2" />
 
     <v-content class="px-0 px-sm-2">
@@ -14,11 +14,20 @@
 import HeaderComponent from '@/components/HeaderComponent.vue';
 import FooterComponent from '@/components/FooterComponent.vue';
 
+import DotGridImg from '@/assets/img/dot-grid.png';
+
 export default {
   name: 'App',
   components: {
     HeaderComponent,
     FooterComponent,
+  },
+  computed: {
+    backgroundStyle() {
+      return {
+        'background-image': `url(${DotGridImg})`,
+      };
+    },
   },
 };
 </script>
