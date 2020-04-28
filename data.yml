@@ -1,0 +1,136 @@
+lecture:
+  -
+    title:
+      - '데이터 구조 1 & Lab'
+      - 'Data Structures 1 & Lab' # subtitle (optional)
+    link: '20s/ds20s/ds20s.html'
+  -
+    title:
+      - '프로그래밍언어론'
+      - 'Programming Languages'
+    link: '20s/pl20s/pl20s.html'
+  -
+    title:
+      - '알고리즘 활용'
+    link: '20s/algo20s/algo20s.html'
+
+
+info:
+  title: OOPSLA
+  address: '22, Soonchunhyang-ro, Sinchang-myeon, Asan-si, Chungcheongnam-do'
+  office: 'Dept. of Computer Science & Engineering, SCH University.'
+
+
+menus:
+  - - 'news'
+    - '/news'
+  - - 'lecture'
+    - '/lecture'
+  - - research
+    - '/research'
+  - - people
+    - '/people'
+
+
+news:
+  -
+    preface: '2020/04/18' # date
+    title: 'Prof. Ha has joined the editorial board'
+    contents: 'Test contents'
+  -
+    preface: '2020/04/17'
+    title: 'Prof. Cho has joined the editorial board of International Journal of Computer Vision (IJCV) as an associate editor.'
+    contents: | # with linebreak
+      이 내용
+      이 내뇽
+      테스트 애옹
+  -
+    preface: '2020/04/15'
+    title: 'Two papers have been accepted to NeurIPS 2019.'
+    contents: 'test contents and contents'
+
+
+research:
+  -
+    preface:
+      - 'Heeseung Kwon'
+      - 'Manjin Kim'
+      - 'Suha Kwak'
+    title: 'MotionCaptire: Newral Motion Feature Learning for Video Understanding'
+    # contents => abstract
+    contents: |
+      Motion plays a crucial role in understanding videos and thus most state-of-the-art neural models for video classification incorporate motion information typically by extracting optical flows frame-by-frame using a separate off-the-shelf method.
+      As the optical flows require heavy computation, incorporating motion information has remained a main computational bottleneck for video understanding.
+
+      <img src="http://cvlab.postech.ac.kr/research/MoCap/images/overall_arch.png">
+
+      In this work, we attempt to replace the external and heavy computation of optical flows with an internal and light-weight learning of motion features.
+      The proposed method, dubbed the MotionCapture (MoCap) module, is an end-to-end trainable block for effective motion feature extraction.
+
+      Inserted in the middle of any neural network, it learns to establish correspondences across frames and convert them into motion features, which are readily fed to the next downstream layer for better prediction.
+      We demonstrate the effectiveness of our method on three standard benchmarks for video action recognition, where inserting the proposed module achieves the state-of-the-art with only a small amount of additional cost.
+    link: 'https://google.com'
+  -
+    preface:
+      - 'Wonpyo Park'
+      - 'Dongju Kim'
+    title: 'SPair-71k: A Large-scale Benchmark for Semantic Correspondence'
+    contents: 'Establishing visual correspondences under large intra-class variations, which is often referred to as semantic correspondence or semantic matching, remains a challenging problem in computer vision. Despite its significance, however, most of the datasets for semantic correspondence are limited to a small amount of image pairs with similar viewpoints and scales. In this paper, we present a new large-scale benchmark dataset of semantically paired images, SPair-71k, which contains 70,958 image pairs with diverse variations in viewpoint and scale. Compared to previous datasets, it is significantly larger in number and contains more accurate and richer annotations. We believe this dataset will provide a reliable testbed to study the problem of semantic correspondence and will help to advance research in this area. We provide the results of recent methods on our new dataset as baselines for further research.'
+    link: 'https://google.com'
+  -
+    preface:
+      - 'Juhong Min'
+      - 'Jean Ponce'
+    title: 'Hyperpixel Flow: Semantic Correspondence with Multi-layer Neural Features'
+    contents: 'Establishing visual correspondences under large intra-class variations, which is often referred to as semantic correspondence or semantic matching, remains a challenging problem in computer vision. Despite its significance, however, most of the datasets for semantic correspondence are limited to a small amount of image pairs with similar viewpoints and scales. In this paper, we present a new large-scale benchmark dataset of semantically paired images, SPair-71k, which contains 70,958 image pairs with diverse variations in viewpoint and scale. Compared to previous datasets, it is significantly larger in number and contains more accurate and richer annotations. We believe this dataset will provide a reliable testbed to study the problem of semantic correspondence and will help to advance research in this area. We provide the results of recent methods on our new dataset as baselines for further research.'
+    link: 'https://google.com'
+
+
+people:
+  professor:
+    -
+      name:
+        - 'SangHo Ha'
+        - '하 상호' # secondary
+      email: 'hsh@sch.ac.kr'
+      thumbnail: 'sangho-ha.jpg'
+      position: 'Professor'
+      detail: # detail page (optional)
+        # office, address, tel, fax => required
+        office: 'Department of Computer Science & Engineering, Soonchunhyang University (순천향대학교)'
+        address: '22, Soonchunhyang-ro, Sinchang-myeon, Asan-si, Chungcheongnam-do, Republic of Korea (31538)'
+        tel: '+82 041-530-1279'
+        fax: '+82 041-630-1548'
+        contents: # customizable contents (optional)
+          item: 'test'
+          Curriculum Vitae: |
+            I received B.S. degree in the department of Computer and Statistics from Seoul National University, Seoul, Korea in 1988, and M.S. and Ph. D degrees in the department of computer science from seoul national university in 1991 and 1995, respectively.
+            My Ph.D. thesis was about desgining and implementing efficiently a lenient functional language, Id, on a multithreaded architecture, DAVRID, which is a hybrid of von Neumann and dataflow.
+            
+            I am a professor in the department of computer science and engineering at Soonchunhyang university, since 1997. I was a director of u-Healthcare research center at Soonchunhyang university from 2007 to 2011. I led two large projects(Related projects: [2,3] in Previous Research Projects) funded by government agencies.
+            Through those projects, we have constructed several u-Healthcare service systems over several island and mountain areas of the choongnam province. Those systems are a kind of telemedicine between urban big hospitals and remote public health branches.
+            We also have constructed a home-care service system for the urban people with chronic diseases of hytertension and diabetes. Some medical services of them are being served until now.
+            
+            I was a visiting professor in the department of electrical and computer engineering at Iowa State University from 2005 to 2006.
+            I worked at Electronics and Telecommunications Research Institute as a postdoctor from 1995 to 1996.
+            I there developed a part of a parallelizaing compiler, ParaC, which is a parallelized version of C.
+            
+            I was a postdoctoral scientist in the computation structure group of the laboratory for computer science at Massachusetts Institute of Technology in U.S.A from 1996 to 1997.
+            I there was involved in a project of developing a compiler for pH(parallel Haskell), which was led by Arvind.
+            I there took a role of generating efficient PowerPC 604 assembly codes from SMT(a shared-memory threaded abstract machine) codes. It is a kind of intermediate form of pH.
+
+  students:
+    -
+      name:
+        - '서해준'
+      email: 'kan02134@gmail.com'
+      thumbnail: 'haejun-seo.png'
+      position: 'Web'
+
+  alumni:
+    -
+      name:
+        - '양철주'
+      email: 'ycj@sch.ac.kr'
+      thumbnail: 'ycj.webp'
+      position: 'App/Kotlin'
