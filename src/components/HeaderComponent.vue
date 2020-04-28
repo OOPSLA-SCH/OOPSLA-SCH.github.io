@@ -45,10 +45,12 @@
       <v-row :class="{ 'd-none': routeName === 'Home' }">
         <!-- people -->
         <v-col v-if="this.routeName === 'PeopleInfo'" class="subtitle-people">
-          <p class="mb-0" v-text="peopleContents.position" />
-          <h3 v-text="peopleContents.name[0]" />
-          <p class="clickable d-inline-block primary--text text--lighten-3"
-            v-text="peopleContents.email" @click="mailTo(peopleContents.email)" />
+          <template v-if="peopleContents">
+            <p class="mb-0" v-text="peopleContents.position" />
+            <h3 v-text="peopleContents.name[0]" />
+            <p class="clickable d-inline-block primary--text text--lighten-3"
+              v-text="peopleContents.email" @click="mailTo(peopleContents.email)" />
+          </template>
         </v-col>
 
         <!-- lists -->
@@ -59,11 +61,13 @@
         <!-- contents -->
         <v-col v-else class="subtitle-contents">
           <!-- preface -->
-          <h4 v-if="target === 'news'" class="news-subtitle-preface" v-text="contents.preface" />
-          <h4 v-else v-text="contents.preface.join(', ')" />
+          <template v-if="contents">
+            <h4 v-if="target === 'news'" class="news-subtitle-preface" v-text="contents.preface" />
+            <h4 v-else v-text="contents.preface && contents.preface.join(', ')" />
 
-          <!-- title -->
-          <h3 class="mt-1" v-text="contents.title" />
+            <!-- title -->
+            <h3 class="mt-1" v-text="contents.title" />
+          </template>
         </v-col>
       </v-row>
     </v-container>
@@ -92,10 +96,30 @@ export default {
       return this.$route.params.title;
     },
     contents() {
-      return this.$store.state.data[this.target]
-        .find(({ title }) => urlSlug(title) === this.contentsTitle);
+      // guard
+      return this.getContents();
     },
     peopleContents() {
+      // guard
+      return this.getPeopleContents();
+    },
+  },
+  methods: {
+    mailTo(email) {
+      window.location.href = `mailto:${email}`;
+    },
+    getContents() {
+      const contents = this.$store.state.data[this.target]
+        .find(({ title }) => urlSlug(title) === this.contentsTitle);
+
+      if (contents === undefined) {
+        this.$router.push('/404');
+        return undefined;
+      }
+
+      return contents;
+    },
+    getPeopleContents() {
       const { people } = this.$store.state.data;
       const prof = people.professor
         .find(({ name: [name] }) => urlSlug(name) === this.$route.params.name);
@@ -114,12 +138,13 @@ export default {
       const al = people.alumni
         .find(({ name: [name] }) => urlSlug(name) === this.$route.params.name);
 
-      return al;
-    },
-  },
-  methods: {
-    mailTo(email) {
-      window.location.href = `mailto:${email}`;
+      if (al !== undefined) {
+        return al;
+      }
+
+      this.$router.push('/404');
+
+      return undefined;
     },
   },
   mounted() {
