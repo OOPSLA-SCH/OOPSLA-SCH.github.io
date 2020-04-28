@@ -18,10 +18,12 @@
 
         <!-- menus -->
         <v-col class="d-flex justify-end">
+          <!-- text btn -->
           <v-btn v-for="([name, linkTo], ind) in menus" :key="ind"
             :to="linkTo"
             text class="d-none d-sm-inline-flex white--text" v-text="name" />
 
+          <!-- collapse btn -->
           <v-menu offset-y>
             <template v-slot:activator="{ on }">
               <v-btn icon class="white--text d-inline-flex d-sm-none" v-on="on">
@@ -29,7 +31,7 @@
               </v-btn>
             </template>
 
-            <v-list>
+            <v-list class="d-block d-sm-none">
               <v-list-item v-for="([name, linkTo], ind) in menus" :key="ind"
                 :to="linkTo">
                 <v-list-item-title v-text="name" />
