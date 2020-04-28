@@ -43,6 +43,12 @@ const routes = [
     name: 'PeopleInfo',
     component: () => import('@/views/PeopleInfo.vue'),
   },
+  {
+    path: '/lecture',
+    name: 'Lecture',
+    props: { target: 'lecture' },
+    component: () => import('@/views/Lists.vue'),
+  },
 ];
 
 const router = new VueRouter({
