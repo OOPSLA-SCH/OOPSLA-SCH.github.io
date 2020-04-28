@@ -39,6 +39,7 @@ export default {
 :root {
   // size
   --max-width: 960px; // sm
+  --people-max-width: 480px;
 
   --home-header-height: 310px;
 }
@@ -67,5 +68,10 @@ export default {
   text-decoration: underline;
   cursor: pointer;
   color: var(--black);
+}
+
+::selection {
+  background: #b53555 !important;
+  color: #fffefe !important;
 }
 </style>

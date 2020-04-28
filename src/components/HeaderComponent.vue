@@ -11,7 +11,7 @@
       <v-row>
         <!-- title -->
         <v-col>
-          <h1 class="clickable" v-text="title" @click="$router.push('/')" />
+          <h1 class="clickable d-inline-block" v-text="title" @click="$router.push('/')" />
         </v-col>
 
         <v-spacer />
@@ -41,8 +41,16 @@
 
       <!-- subtitle -->
       <v-row :class="{ 'd-none': routeName === 'Home' }">
+        <!-- people -->
+        <v-col v-if="this.routeName === 'PeopleInfo'" class="subtitle-people">
+          <p class="mb-0" v-text="peopleContents.position" />
+          <h3 v-text="peopleContents.name[0]" />
+          <p class="clickable d-inline-block primary--text text--lighten-3"
+            v-text="peopleContents.email" @click="mailTo(peopleContents.email)" />
+        </v-col>
+
         <!-- lists -->
-        <v-col v-if="isLists">
+        <v-col v-else-if="isLists">
           <h2 class="ml-4 text-uppercase" v-text="routeName" />
         </v-col>
 
@@ -52,6 +60,7 @@
           <h4 v-if="target === 'news'" class="news-subtitle-preface" v-text="contents.preface" />
           <h4 v-else v-text="contents.preface.join(', ')" />
 
+          <!-- title -->
           <h3 class="mt-1" v-text="contents.title" />
         </v-col>
       </v-row>
@@ -81,9 +90,27 @@ export default {
       return this.$route.params.title;
     },
     contents() {
-      const contents = this.$store.state.data[this.target]
+      return this.$store.state.data[this.target]
         .find(({ title }) => urlSlug(title) === this.contentsTitle);
-      return contents;
+    },
+    peopleContents() {
+      const { people } = this.$store.state.data;
+      const prof = people.professor
+        .find(({ name: [name] }) => urlSlug(name) === this.$route.params.name);
+
+      if (prof !== undefined) {
+        return prof;
+      }
+
+      const stu = people.students
+        .find(({ name: [name] }) => urlSlug(name) === this.$route.params.name);
+
+      return stu;
+    },
+  },
+  methods: {
+    mailTo(email) {
+      window.location.href = `mailto:${email}`;
     },
   },
   mounted() {
@@ -162,6 +189,18 @@ header {
 
       h3 {
         font-size: 20px;
+      }
+    }
+
+    div.subtitle-people {
+      h3 {
+        font-size: 28px;
+        letter-spacing: 2px;
+      }
+
+      p {
+        font-size: 14px;
+        letter-spacing: 2px;
       }
     }
   }

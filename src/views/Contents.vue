@@ -4,7 +4,7 @@
       <p><a :href="contents.link" target="_blank">RESEARCH LINK</a></p>
     </template>
 
-    <p class="my-6" v-html="linebreakParser(contents.contents)" />
+    <p class="render my-6" v-html="linebreakParser(contents.contents)" />
   </v-container>
 </template>
 
@@ -37,7 +37,7 @@ export default {
   },
   mounted() {
     Vue.nextTick(() => {
-      document.querySelectorAll('p > img').forEach((el) => {
+      document.querySelectorAll('p.render > img').forEach((el) => {
         // eslint-disable-next-line no-param-reassign
         el.style = 'max-width: 100%; background-color: #ffffff;';
         el.addEventListener('click', () => window.open(el.src, '_blank'));

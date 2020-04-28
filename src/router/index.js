@@ -33,6 +33,16 @@ const routes = [
     props: { target: 'research' },
     component: () => import('@/views/Contents.vue'),
   },
+  {
+    path: '/people',
+    name: 'People',
+    component: () => import('@/views/People.vue'),
+  },
+  {
+    path: '/people/:name',
+    name: 'PeopleInfo',
+    component: () => import('@/views/PeopleInfo.vue'),
+  },
 ];
 
 const router = new VueRouter({
