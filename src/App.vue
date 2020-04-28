@@ -1,6 +1,6 @@
 <template>
   <v-app :style="backgroundStyle">
-    <header-component class="home px-0 px-sm-2" />
+    <header-component class="px-0 px-sm-2" :class="{ 'home': $route.name === 'Home' }" />
 
     <v-content class="px-0 px-sm-2">
       <router-view />
@@ -41,7 +41,6 @@ export default {
   --max-width: 960px; // sm
 
   --home-header-height: 310px;
-  --header-height: 200px;
 }
 </style>
 

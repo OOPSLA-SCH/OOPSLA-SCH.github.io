@@ -3,13 +3,13 @@
     <!-- hello! -->
     <hello-component />
 
-    <!-- news -->
+    <!-- contents -->
 
-    <h1 class="clickable d-inline-block mt-8 mb-2">NEWS</h1>
+    <h1 class="clickable d-inline-block mt-8 mb-2" @click="goto('news')">NEWS</h1>
     <contents-component target="news" />
 
-    <h1 class="clickable d-inline-block mt-8 mb-2">RESEARCH</h1>
-    <contents-component target="research" />
+    <h1 class="clickable d-inline-block mt-8 mb-2" @click="goto('research')">RESEARCH</h1>
+    <contents-component target="research" class="mb-12" />
   </v-container>
 </template>
 
@@ -19,11 +19,14 @@ import ContentsComponent from '@/components/ContentsComponent.vue';
 
 export default {
   name: 'Home',
-  data: () => ({
-  }),
   components: {
     HelloComponent,
     ContentsComponent,
+  },
+  methods: {
+    goto(target) {
+      this.$router.push(target);
+    },
   },
 };
 </script>
