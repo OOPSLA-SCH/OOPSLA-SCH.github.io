@@ -18,9 +18,13 @@
 
         <!-- menus -->
         <v-col class="d-flex justify-end">
+          <v-btn v-for="([name, linkTo], ind) in menus" :key="ind"
+            :to="linkTo"
+            text class="d-none d-sm-inline-flex white--text" v-text="name" />
+
           <v-menu offset-y>
             <template v-slot:activator="{ on }">
-              <v-btn icon class="white--text" v-on="on">
+              <v-btn icon class="white--text d-inline-flex d-sm-none" v-on="on">
                 <v-icon>mdi-menu</v-icon>
               </v-btn>
             </template>
