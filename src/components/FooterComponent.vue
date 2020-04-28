@@ -1,6 +1,11 @@
 <template>
   <footer class="grey darken-4">
     <v-container class="footer-contents white--text">
+      <!-- top button -->
+      <div class="to-top">
+        <span class="clickable px-2 py-1 white grey--text text--darken-4" @click="toTop">top</span>
+      </div>
+
       <!-- background paths -->
       <div class="paths">
         <div />
@@ -30,6 +35,11 @@ export default {
     address: '',
     office: '',
   }),
+  methods: {
+    toTop() {
+      window.scrollTo(0, 0);
+    },
+  },
   mounted() {
     const { info } = this.$store.state.data;
 
@@ -54,6 +64,18 @@ footer {
 
     p {
       font-size: 13px;
+    }
+
+    div.to-top {
+      position: relative;
+      z-index: 100;
+
+      & > span {
+        position: absolute;
+        right: 0;
+        top: -12px;
+        font-size: 14px;
+      }
     }
 
     div.paths {
