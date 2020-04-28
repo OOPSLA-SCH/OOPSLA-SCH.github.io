@@ -49,6 +49,11 @@ const routes = [
     props: { target: 'lecture' },
     component: () => import('@/views/Lists.vue'),
   },
+  {
+    path: '*',
+    name: 'HTTP_404',
+    component: () => import('@/views/PNF.vue'),
+  },
 ];
 
 const router = new VueRouter({
