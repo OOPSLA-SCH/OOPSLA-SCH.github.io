@@ -105,7 +105,14 @@ export default {
       const stu = people.students
         .find(({ name: [name] }) => urlSlug(name) === this.$route.params.name);
 
-      return stu;
+      if (stu !== undefined) {
+        return stu;
+      }
+
+      const al = people.alumni
+        .find(({ name: [name] }) => urlSlug(name) === this.$route.params.name);
+
+      return al;
     },
   },
   methods: {

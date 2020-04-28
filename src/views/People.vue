@@ -18,6 +18,16 @@
         :isDetail="s.detail !== undefined" />
     </v-row>
 
+    <v-divider class="transparent my-4" />
+
+    <h3 class="mt-6 mb-2">Alumni</h3>
+    <v-row>
+      <people-component v-for="(s, ind) in alumni" :key="`2-${ind}`"
+        class="my-4"
+        :name="s.name[0]" :email="s.email" :thumbnail="s.thumbnail" :position="s.position"
+        :isDetail="s.detail !== undefined" />
+    </v-row>
+
     <v-divider class="transparent my-8" />
   </v-container>
 </template>
@@ -36,6 +46,9 @@ export default {
     },
     students() {
       return this.$store.state.data.people.students;
+    },
+    alumni() {
+      return this.$store.state.data.people.alumni;
     },
   },
 };

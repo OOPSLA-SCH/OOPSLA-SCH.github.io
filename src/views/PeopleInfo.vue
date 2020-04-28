@@ -67,7 +67,14 @@ export default {
       const student = people.students
         .find(({ name: [name] }) => urlSlug(name) === userName);
 
-      return student;
+      if (student !== undefined) {
+        return student;
+      }
+
+      const alumni = people.alumni
+        .find(({ name: [name] }) => urlSlug(name) === userName);
+
+      return alumni;
     },
   },
   methods: {
