@@ -2,26 +2,28 @@
   <div>
     <v-row>
       <v-col class="white--text">
-        <p class="mb-1">Hello, students</p>
-        <p class="mb-1">Welcome to the OOPSLA laboratory</p>
+        <p class="mb-1" ref="result">
+          $ ocamlc -o main *.ml<br>
+          $ main
+        </p>
       </v-col>
     </v-row>
 
     <v-row>
       <v-col>
         <v-sheet elevation="3" min-height="150">
-          <v-container class="codes pt-4">
-            <p v-for="([indent, code], ind) in codes_1" :key="`1-${ind}`"
-              class="mb-1" :class="`ml-${indent * 4}`"
-              v-text="code" />
-            <p class="my-4 grey--text text--lighten-1" v-text="result_1" />
+          <v-container class="codes d-flex flex-column pt-4">
+            <v-row>
+              <v-col cols="12">
+                <p ref="codes" />
+              </v-col>
+            </v-row>
 
-            <p v-for="([indent, code], ind) in codes_2" :key="`2-${ind}`"
-              class="mb-1" :class="`ml-${indent * 4}`"
-              v-text="code" />
-            <p class="mt-4 grey--text text--lighten-1" v-text="result_2" />
-
-            <p class="mb-1 grey--text text-right">OCaml</p>
+            <v-row>
+              <v-col>
+                <p class="mb-1 grey--text text-right">OCaml</p>
+              </v-col>
+            </v-row>
           </v-container>
         </v-sheet>
       </v-col>
@@ -30,32 +32,66 @@
 </template>
 
 <script>
+import TypeIt from 'typeit';
+
 export default {
-  data: () => ({
-    codes_1: [
-      [0, '# let msgs = ['],
-      [1, '"Hello, students";'],
-      [1, '"Welcome to the OOPSLA laboratory"'],
-      [0, '] ;;'],
-    ],
-    result_1: 'val msgs : string list = ["Hello, students"; "Welcome to the OOPSLA laboratory"]',
-    codes_2: [
-      [0, '# let rec welcome_msg l ='],
-      [1, 'match l with'],
-      [1, '| [] -> 0'],
-      [1, '| head::tail ->'],
-      [2, 'print_endline head;'],
-      [2, 'welcome_msg tail;;'],
-    ],
-    result_2: 'val welcome_msg : string list -> int = <fun>',
-  }),
+  methods: {
+    getTab(size) {
+      return `<span style="margin-left: ${size * 22}px"> </span>`;
+    },
+  },
+  mounted() {
+    const { codes } = this.$refs;
+    const { result } = this.$refs;
+
+    // eslint-disable-next-line no-new
+    new TypeIt(codes, {
+      speed: 50,
+      startDelay: 1400,
+    })
+      .type('let msgs = [];;', { delay: 300 })
+      .move(-3, { speed: 30, delay: 500 })
+      .type('"Hello, students"; "Welcome to the OOPSLA laboratory"', { dealy: 800 })
+      .move('END', { dealy: 1000 })
+      .break({ delay: 300 })
+      .break({ delay: 300 })
+      .type('let rec welcome l =', { delay: 500 })
+      .break()
+      .type(this.getTab(1), { delay: 100 })
+      .type('match l with', { delay: 500 })
+      .break()
+      .type(this.getTab(2), { delay: 350 })
+      .type('| [] -> 0', { delay: 100 })
+      .break()
+      .type(this.getTab(2))
+      .type('| head::tail ->', { delay: 200 })
+      .break()
+      .type(this.getTab(3), { delay: 100 })
+      .type('print_endline head;')
+      .break()
+      .type(this.getTab(3), { delay: 100 })
+      .type('welcome(tail);;')
+      .break({ delay: 1200 })
+      .move(-3, { delay: 100 })
+      .delete(1, { delay: 300 })
+      .move(-4, { delay: 100 })
+      .delete(1, { delay: 200 })
+      .type(' ', { delay: 600 })
+      .move('END')
+      .break()
+      .type('welcome msgs', { delay: 1000 })
+      .exec(async () => {
+        result.innerHTML = '$ ocamlc -o main *.ml<br>$ main<br>executing...';
+        await new Promise((res) => setTimeout(res, 1400));
+        result.innerHTML = '$ ocamlc -o main *.ml<br>$ main<br>Hello, students<br>Welcome to the OOPSLA laboratory';
+      })
+      .go();
+  },
 };
 </script>
 
 <style lang="scss" scoped>
 .codes {
-  p, span {
-    font-size: 13px;
-  }
+  font-size: 13px;
 }
 </style>
