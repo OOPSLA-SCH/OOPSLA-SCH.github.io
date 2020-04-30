@@ -1,5 +1,5 @@
 <template>
-  <footer class="grey darken-4">
+  <footer class="grey darken-4" :style="backgroundStyle">
     <v-container class="footer-contents white--text">
       <!-- top button -->
       <div class="to-top">
@@ -8,8 +8,8 @@
 
       <!-- background paths -->
       <div class="paths">
-        <div />
-        <div />
+        <div :style="backgroundStyle" />
+        <div :style="backgroundStyle" />
       </div>
 
       <!-- infos -->
@@ -29,12 +29,21 @@
 </template>
 
 <script>
+import DotGridImg from '@/assets/img/dot-grid.png';
+
 export default {
   data: () => ({
     title: '',
     address: '',
     office: '',
   }),
+  computed: {
+    backgroundStyle() {
+      return {
+        'background-image': `url(${DotGridImg})`,
+      };
+    },
+  },
   methods: {
     toTop() {
       window.scrollTo(0, 0);
@@ -53,6 +62,8 @@ export default {
 <style lang="scss" scoped>
 footer {
   overflow: hidden;
+  background-repeat: repeat;
+  background-blend-mode: overlay;
 
   .footer-contents {
     max-width: var(--max-width);
