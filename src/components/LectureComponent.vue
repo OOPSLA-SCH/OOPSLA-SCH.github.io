@@ -21,7 +21,8 @@ export default {
   },
   methods: {
     goto(link) {
-      window.open(`${window.location.origin}/lecture/${link}`, '_blank');
+      // window.open(`${window.location.origin}/lecture/${link}`, '_blank');
+      window.location.href = `${window.location.origin}/lecture/${link}`;
     },
   },
 };

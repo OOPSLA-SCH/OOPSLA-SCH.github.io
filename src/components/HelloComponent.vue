@@ -93,5 +93,6 @@ export default {
 <style lang="scss" scoped>
 .codes {
   font-size: 13px;
+  height: 305px;
 }
 </style>
